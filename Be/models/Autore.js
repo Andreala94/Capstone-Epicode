@@ -1,4 +1,6 @@
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 const Autore = new mongoose.Schema(
 
@@ -21,7 +23,10 @@ const Autore = new mongoose.Schema(
       email: {
         type: String,
         require: true,
-       
+        index:{
+          unique: true,
+          dropDups: true,
+        }
       },
   
       avatar: {
@@ -44,4 +49,15 @@ const Autore = new mongoose.Schema(
   
   )
 
-//   module.exports = mongoose.model('Auth', 'Authors');
+  Autore.pre('save', async function(next){
+    const user = this
+    try {
+      const salt = await bcrypt.genSalt(10) 
+      const hash = await bcrypt.hash(user.password, salt)
+      user.password= hash
+      next()
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  module.exports = mongoose.model('Autore', Autore, 'Autori');

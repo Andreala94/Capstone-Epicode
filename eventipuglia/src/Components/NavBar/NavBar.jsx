@@ -7,11 +7,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary bgcolor ">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -32,6 +32,8 @@ function NavBar() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
+
+            <Button className="bg-info ms-2">Login</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

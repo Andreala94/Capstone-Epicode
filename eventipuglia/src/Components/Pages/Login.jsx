@@ -78,12 +78,13 @@ function Login(){
     <>
     <NavBar />
   {
-    authMode !== "signin" && ( <div className="Auth-form-container">
+    authMode !== "signin" && ( 
+    <div className="Auth-form-container d-flex justify-content-center align-items-center min-vh-100 bg-light ">
     <form className="Auth-form" onSubmit={handleRegister}>
       <div className="Auth-form-content">
         <h3 className="Auth-form-title">Registrati</h3>
         <div className="text-center">
-          Not registered yet?{" "}
+          Sei registrato?{" "}
           <span className="link-primary" onClick={changeAuthMode}>
             Sign Up
           </span>
@@ -93,7 +94,6 @@ function Login(){
           <input
             type="text"
             className="form-control mt-1"
-            placeholder="Nome"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 name:e.target.value})}
@@ -104,7 +104,6 @@ function Login(){
           <input
             type="text"
             className="form-control mt-1"
-            placeholder="Cognome"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 surname:e.target.value})}
@@ -115,7 +114,6 @@ function Login(){
           <input
             type="email"
             className="form-control mt-1"
-            placeholder="Enter email"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 email:e.target.value})}
@@ -126,7 +124,6 @@ function Login(){
           <input
             type="password"
             className="form-control mt-1"
-            placeholder="Password"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 password:e.target.value})}
@@ -165,12 +162,12 @@ function Login(){
   }
   {
     authMode === "signin" && (
-      <div className="Auth-form-container">
+      <div className="Auth-form-container d-flex justify-content-center align-items-center min-vh-100 bg-light">
       <form className="Auth-form" onSubmit={handleLogin}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Login</h3>
           <div className="text-center">
-            Already registered?{" "}
+          Non sei registrato? {" "}
             <span className="link-primary" onClick={changeAuthMode}>
               Sign In
             </span>
@@ -180,7 +177,6 @@ function Login(){
             <input
               type="email"
               className="form-control mt-1"
-              placeholder="Email Address"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,
                 email:e.target.value
@@ -192,7 +188,6 @@ function Login(){
             <input
               type="password"
               className="form-control mt-1"
-              placeholder="Password"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,
                 password:e.target.value

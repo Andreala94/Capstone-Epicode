@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import '../NavBar/NavBar.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -39,8 +42,9 @@ function NavBar() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-
-            <Button className="bg-info ms-2" onClick={routeLogin} >Login</Button>
+            <FontAwesomeIcon  icon={faShoppingCart} />
+            <Button className="bg-info ms-2" onClick={routeLogin}> Login</Button>
+            
           </Form>
         </Navbar.Collapse>
       </Container>

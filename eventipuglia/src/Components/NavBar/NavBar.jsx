@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import '../NavBar/NavBar.css';
 
@@ -9,7 +10,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
+
+
 function NavBar() {
+   const navigate = useNavigate();
+   const routeLogin = () => {navigate('/login')} // Serve per al click del bottone login, passare alla pagina /login
+
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary bgcolor ">
       <Container fluid>
@@ -33,7 +40,7 @@ function NavBar() {
             />
             <Button variant="outline-success">Search</Button>
 
-            <Button className="bg-info ms-2">Login</Button>
+            <Button className="bg-info ms-2" onClick={routeLogin} >Login</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

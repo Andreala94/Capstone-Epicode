@@ -3,8 +3,44 @@ const mongoose = require('mongoose');
 const Autore = require('../models/Autore');
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require('multer')
 
 const autoriR = express.Router()
+
+
+
+cloudinary.config({ 
+    cloud_name: 'dsmb3mzsp', 
+    api_key: '871683394519529', 
+    api_secret: 'Wss9FCpQptIISb-boHhBFiw3nQM' 
+  });
+
+
+
+const cloudStorage = new CloudinaryStorage({
+     cloudinary: cloudinary,
+     params: {
+        folder: 'CapstoneEpicode',
+        format: async ( req, file, cb)=> 'png',
+        public_id: (req, file) => file.name,
+     }
+    
+});
+
+
+const cloudUpload = multer ({ storage: cloudStorage }) // caricare immagine incloud
+
+autoriR.post("/authors/cloudUpload", cloudUpload.single("avatar"), async (req, res) => {
+    try {
+        res.status(200).json({ avatar: req.file.path });
+    } catch (error) {
+        console.error("File upload failed:", error);
+        res.status(500).json({ error: "File upload failed" });
+    }
+}
+);
 
 autoriR.post("/register/authors", async (req, res)=>{
     

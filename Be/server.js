@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose"); //
 const PORT = 6060;
+const cors = require('cors');
 
 const app = express();
 
@@ -10,7 +11,7 @@ const autoriRoute = require('./routes/autori')
 
 // middleware
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 
 

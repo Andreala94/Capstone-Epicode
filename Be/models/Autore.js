@@ -7,22 +7,22 @@ const Autore = new mongoose.Schema(
     {
       name: {
         type: String,
-        require: true,
+        required: true,
        
       },
-      cognome: {
+      surname: {
         type: String,
-        require: true,
+        required: true,
         
       },
       password: {
         type: String,
-        require: true,
+        required: true,
        
       },
       email: {
         type: String,
-        require: true,
+        required: true,
         index:{
           unique: true,
           dropDups: true,
@@ -31,12 +31,12 @@ const Autore = new mongoose.Schema(
   
       avatar: {
         type: String,
-        require: true,
+        required: true,
         
       },
       dob: {
         type: String,
-        require: true,
+        required: true,
         
       }
       

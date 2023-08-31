@@ -1,5 +1,5 @@
 import React from 'react';
-import { json, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 import '../NavBar/NavBar.css';
 
@@ -24,7 +24,7 @@ function NavBar() {
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary bgcolor ">
+    <Navbar expand="lg" className="bg-body-tertiary bgcolor  ">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -47,12 +47,13 @@ function NavBar() {
             <Button variant="outline-success">Search</Button>
             <Button className='ms-2' variant="outline-success"><FontAwesomeIcon icon={faShoppingCart} /></Button>
             {getUserAvatar() !== null &&
-              <Button className='ms-2' variant="outline-success" >
+              <Button className='ms-2 rounded-circle p-1' variant="outline-success" >
 
                 <img
                   src={getUserAvatar()}
                   alt="User Avatar"
-                  style={{ maxWidth: '100%' }}
+                    style={{ maxWidth: '2rem' }}
+                   
                 />
               </Button>
             }

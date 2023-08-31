@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import NavBar from '../NavBar/NavBar'
-
-
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,7 +9,7 @@ function Login(){
     const [loginFormData, setLoginFormData] = useState({})
     const [registerFormData, setRegisterFormData ] = useState({})
     const [avatar, setAvatar] = useState(null)
-    
+    const navigate = useNavigate();
     const [authMode, setAuthMode] = useState("signin")
 
   const changeAuthMode = () => {
@@ -25,11 +24,24 @@ function Login(){
             body: JSON.stringify(loginFormData),
             headers: {"Content-Type":"application/json"}
         })
+        const risposta= await response.json()
+            if(response.status===200){
+              
+                localStorage.setItem('userToken', JSON.stringify(risposta.token))
+                localStorage.setItem('userAvatar', JSON.stringify(risposta.avatar))
             
-        return await response.json()
+              alert(risposta.message)
+              
+              navigate('/') 
+              
+            }else{
+              alert(risposta.message)
+            }
+       
     } catch (error) {
-        console.log(error.json());
-        alert("")
+      
+        console.log('jksdakf');
+        
     }
   }
 
@@ -66,7 +78,7 @@ function Login(){
         return await response.json()
     } catch (error) {
         console.log(error.json());
-        alert("")
+        
     }
   }
 
@@ -79,14 +91,14 @@ function Login(){
     <NavBar />
   {
     authMode !== "signin" && ( 
-    <div className="Auth-form-container d-flex justify-content-center align-items-center min-vh-100 bg-light ">
+    <div className="Auth-form-container d-flex justify-content-center align-items-center p-5  ">
     <form className="Auth-form" onSubmit={handleRegister}>
       <div className="Auth-form-content">
-        <h3 className="Auth-form-title">Registrati</h3>
+        <h3 className="Auth-form-title text-center ">Registrati</h3>
         <div className="text-center">
           Sei registrato?{" "}
           <span className="link-primary" onClick={changeAuthMode}>
-            Sign Up
+            Login
           </span>
         </div>
         <div className="form-group mt-3">
@@ -162,14 +174,14 @@ function Login(){
   }
   {
     authMode === "signin" && (
-      <div className="Auth-form-container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
       <form className="Auth-form" onSubmit={handleLogin}>
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Login</h3>
+          <h3 className="Auth-form-title text-center">Login</h3>
           <div className="text-center">
           Non sei registrato? {" "}
             <span className="link-primary" onClick={changeAuthMode}>
-              Sign In
+              Register
             </span>
           </div>
           <div className="form-group mt-3">

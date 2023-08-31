@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 
 import '../NavBar/NavBar.css';
 
@@ -16,9 +16,12 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 function NavBar() {
-   const navigate = useNavigate();
-   const routeLogin = () => {navigate('/login')} // Serve per al click del bottone login, passare alla pagina /login
+  const navigate = useNavigate();
+  const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
 
+  const getUserAvatar = () => {
+    return JSON.parse(localStorage.getItem('userAvatar'))
+  }
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary bgcolor ">
@@ -32,7 +35,7 @@ function NavBar() {
             navbarScroll
           >
             <Nav.Link href="#action1">Nome sito</Nav.Link>
-           
+
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -42,9 +45,20 @@ function NavBar() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-            <FontAwesomeIcon  icon={faShoppingCart} />
+            <Button className='ms-2' variant="outline-success"><FontAwesomeIcon icon={faShoppingCart} /></Button>
+            {getUserAvatar() !== null &&
+              <Button className='ms-2' variant="outline-success" >
+
+                <img
+                  src={getUserAvatar()}
+                  alt="User Avatar"
+                  style={{ maxWidth: '100%' }}
+                />
+              </Button>
+            }
+
             <Button className="bg-info ms-2" onClick={routeLogin}> Login</Button>
-            
+
           </Form>
         </Navbar.Collapse>
       </Container>

@@ -1,5 +1,5 @@
-import React from 'react';
-import {  useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import {  useNavigate  } from 'react-router-dom';
 
 import '../NavBar/NavBar.css';
 
@@ -15,6 +15,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 
+
 function NavBar() {
   const navigate = useNavigate();
   const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
@@ -22,7 +23,23 @@ function NavBar() {
   const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
   }
+  const getUserName = () => {
+    const name= JSON.parse(localStorage.getItem('userName'))
+    return name.charAt(0).toUpperCase() + name.slice(1)
+  }
+  //funzione logout
 
+  const [refresh, setRefresh]= useState(0)
+
+  const logout = () =>{
+     localStorage.removeItem('userName')
+     localStorage.removeItem('userAvatar')
+     localStorage.removeItem('userToken')
+     setRefresh(refresh +1 )
+  }
+
+  
+   
   return (
     <Navbar expand="lg" className="bg-body-tertiary bgcolor  ">
       <Container fluid>
@@ -47,8 +64,10 @@ function NavBar() {
             <Button variant="outline-success">Search</Button>
             <Button className='ms-2' variant="outline-success"><FontAwesomeIcon icon={faShoppingCart} /></Button>
             {getUserAvatar() !== null &&
+            <>
+                <span className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
               <Button className='ms-2 rounded-circle p-1' variant="outline-success" >
-
+                   
                 <img
                   src={getUserAvatar()}
                   alt="User Avatar"
@@ -56,9 +75,13 @@ function NavBar() {
                    
                 />
               </Button>
+              <Button className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
+              </>
             }
-
-            <Button className="bg-info ms-2" onClick={routeLogin}> Login</Button>
+            {getUserAvatar() === null && 
+             <Button className="bg-info ms-2 me-4" onClick={routeLogin}> Login</Button>
+            }
+           
 
           </Form>
         </Navbar.Collapse>

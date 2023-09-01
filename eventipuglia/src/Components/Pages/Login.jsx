@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import NavBar from '../NavBar/NavBar'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -11,6 +13,7 @@ function Login(){
     const [avatar, setAvatar] = useState(null)
     const navigate = useNavigate();
     const [authMode, setAuthMode] = useState("signin")
+
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
@@ -26,16 +29,28 @@ function Login(){
         })
         const risposta= await response.json()
             if(response.status===200){
+              // utente loggato con successo 
               
                 localStorage.setItem('userToken', JSON.stringify(risposta.token))
                 localStorage.setItem('userAvatar', JSON.stringify(risposta.avatar))
+                localStorage.setItem('userName', JSON.stringify(risposta.name))
             
-              alert(risposta.message)
+                
               
               navigate('/') 
               
             }else{
-              alert(risposta.message)
+              // notifica in caso di errore
+              toast.error(risposta.message, { 
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
             }
        
     } catch (error) {
@@ -218,6 +233,7 @@ function Login(){
 
     )
   }
+  <ToastContainer />
   </>
   )
   

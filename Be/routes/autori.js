@@ -137,6 +137,7 @@ autoriR.post("/login/authors", async (req,res)=>{
         message: "Login effettuato con successo!",
         token,
         avatar: user.avatar,
+        name: user.name,
     })
 })
 

@@ -3,6 +3,7 @@ import NavBar from '../NavBar/NavBar'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import '../Pages/CSS/Login.css'
 
 
 
@@ -100,13 +101,21 @@ function Login(){
   const onChangeHandleFile = (e) =>{
     setAvatar(e.target.files[0])
   }
-  
+// sfondo body Registrati
+  // const bodyStyleR = {
+  //   backgroundImage: "url('https://www.villeecasali.com/wp-content/uploads/2016/06/Piana-degli-Ulivi-1.jpg')",
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundAttachment: 'fixed',
+  // };
+
   return(
     <>
     <NavBar />
+
   {
     authMode !== "signin" && ( 
-    <div className="Auth-form-container d-flex justify-content-center align-items-center p-5  ">
+    <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
     <form className="Auth-form" onSubmit={handleRegister}>
       <div className="Auth-form-content">
         <h3 className="Auth-form-title text-center ">Registrati</h3>
@@ -189,7 +198,7 @@ function Login(){
   }
   {
     authMode === "signin" && (
-      <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
+      <div className="Auth-form-container d-flex justify-content-center align-items-center p-5" >
       <form className="Auth-form" onSubmit={handleLogin}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title text-center">Login</h3>

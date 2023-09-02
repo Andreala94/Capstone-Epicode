@@ -1,0 +1,12 @@
+@media (max-width: 2870px){
+    body{
+        background-image: none;
+    }
+}
+
+body{
+    background-image: url('https://www.masseriacappuccini.it/site/assets/files/1026/masseria-martina-franca.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

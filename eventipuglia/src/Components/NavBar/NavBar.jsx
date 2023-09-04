@@ -19,6 +19,7 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavBar() {
   const navigate = useNavigate();
   const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
+  const routeHomePage = () => {navigate('/HomePage')}
 
   const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))

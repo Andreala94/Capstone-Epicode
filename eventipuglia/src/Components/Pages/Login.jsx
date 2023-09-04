@@ -3,8 +3,7 @@ import NavBar from '../NavBar/NavBar'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import '../Pages/CSS/Login.css'
-
+import '../Pages/CSS/Login.css'
 
 
 function Login(){
@@ -23,7 +22,7 @@ function Login(){
   const handleLogin = async(e)=>{
     e.preventDefault()
     try {
-        const response = await fetch('http://localhost:6060/login/authors', {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/login/authors`, {
             method: "POST",
             body: JSON.stringify(loginFormData),
             headers: {"Content-Type":"application/json"}
@@ -65,7 +64,7 @@ function Login(){
     const avatarFile = new FormData()
     avatarFile.append('avatar', file)
     try {
-        const response = await fetch('http://localhost:6060/authors/cloudUpload', {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/authors/cloudUpload`, {
             method: "POST",
             body: avatarFile
         })
@@ -85,7 +84,7 @@ function Login(){
                 ...registerFormData,
                 avatar: uploadAvatarImage.avatar}
 
-        const response = await fetch('http://localhost:6060/register/authors', {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/register/authors`, {
             method: "POST",
             body: JSON.stringify(formDataWithAvatar),
             headers: {"Content-Type":"application/json"}
@@ -101,13 +100,7 @@ function Login(){
   const onChangeHandleFile = (e) =>{
     setAvatar(e.target.files[0])
   }
-// sfondo body Registrati
-  // const bodyStyleR = {
-  //   backgroundImage: "url('https://www.villeecasali.com/wp-content/uploads/2016/06/Piana-degli-Ulivi-1.jpg')",
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundAttachment: 'fixed',
-  // };
+
 
   return(
     <>
@@ -116,7 +109,7 @@ function Login(){
   {
     authMode !== "signin" && ( 
     <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
-    <form className="Auth-form" onSubmit={handleRegister}>
+    <form className="Auth-form form-color p-4 border rounded-5" onSubmit={handleRegister}>
       <div className="Auth-form-content">
         <h3 className="Auth-form-title text-center ">Registrati</h3>
         <div className="text-center">
@@ -129,7 +122,7 @@ function Login(){
           <label>Nome</label>
           <input
             type="text"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 name:e.target.value})}
@@ -139,17 +132,17 @@ function Login(){
           <label>Cognome</label>
           <input
             type="text"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 surname:e.target.value})}
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 ">
           <label>Email address</label>
           <input
             type="email"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 email:e.target.value})}
@@ -159,7 +152,7 @@ function Login(){
           <label>Password</label>
           <input
             type="password"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
                 password:e.target.value})}
@@ -169,7 +162,7 @@ function Login(){
           <label>Avatar</label>
           <input
             type="file"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             placeholder="Avatar"
             onChange={onChangeHandleFile}
           />
@@ -178,7 +171,7 @@ function Login(){
           <label>Data di Nascita</label>
           <input
             type="date"
-            className="form-control mt-1"
+            className="form-control mt-1 border border-dark"
             placeholder="Date"
             onChange={(e)=>setRegisterFormData({
                 ...registerFormData,
@@ -199,7 +192,7 @@ function Login(){
   {
     authMode === "signin" && (
       <div className="Auth-form-container d-flex justify-content-center align-items-center p-5" >
-      <form className="Auth-form" onSubmit={handleLogin}>
+      <form className="Auth-form form-color p-4 border rounded-5 " onSubmit={handleLogin}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title text-center">Login</h3>
           <div className="text-center">
@@ -212,7 +205,7 @@ function Login(){
             <label>Email address</label>
             <input
               type="email"
-              className="form-control mt-1"
+              className="form-control mt-1 border border-dark"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,
                 email:e.target.value
@@ -223,7 +216,7 @@ function Login(){
             <label>Password</label>
             <input
               type="password"
-              className="form-control mt-1"
+              className="form-control mt-1 border border-dark"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,
                 password:e.target.value

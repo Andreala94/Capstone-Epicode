@@ -1,3 +1,10 @@
 .bgcolor{
     background-color: aqua;
 }
+.font{
+    font-family: Arial, sans-serif;
+}
+.logo > img{
+    height: 4rem;
+    width: 6em;
+}

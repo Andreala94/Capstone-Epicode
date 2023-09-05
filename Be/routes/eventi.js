@@ -66,4 +66,30 @@ EventiR.post("/newevents/create", async (req, res)=>{
     }
 })
 
+EventiR.get("/eventi",    async (req, res) => {
+
+    const totalEventi = await Evento.count();
+
+    try {
+        const eventi = await Evento.find()
+
+        res.status(200).send({
+            statusCode: 200,
+            message:"ciao",
+            totalEventi: totalEventi,
+            eventi: eventi,
+        });
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "internal server Error",
+            error,
+        });
+    }
+
+})
+
+
+
+
 module.exports = EventiR

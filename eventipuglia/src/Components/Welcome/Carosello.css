@@ -2,16 +2,6 @@
     text-align: center;
 
 }
-/* .carousel-control-next-icon{
-    
-    background-color: rgb(20, 210, 210);
-}
-
-.carousel-control-prev-icon{
-    background-color: rgb(20, 210, 210);
-} */
-
-
 
 @media (max-width: 540px ) {
     .dimensione{
@@ -27,8 +17,10 @@
     }
 }
 
+
+
 @media (min-width: 1200px){
-    img {
+   .carosello > img {
        width: auto;
         height: 500px !important;
     }

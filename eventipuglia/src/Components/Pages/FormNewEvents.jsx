@@ -23,7 +23,7 @@ function FormNewEvents ()  {
     fileData.append('img', file)
 
     try {
-        const response = await fetch('http://localhost:6060/events/cloudUpload',
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/events/cloudUpload`,
             {
                 method: 'POST',
                 body: fileData,
@@ -60,7 +60,7 @@ const handleSubmit = async (event) => {
                 immagine: uploadedFile.imgUrl,
             }
 
-            const response = await fetch('http://localhost:6060/newevents/create',
+            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/newevents/create`,
                 {
                     method: 'POST',
                     headers: {
@@ -70,7 +70,7 @@ const handleSubmit = async (event) => {
                 }
             )
             return response.json()
-            .then((response)=> navigate("/homepage"))
+            .then((response)=> navigate("/"))
         } catch (error) {
             console.error('Failed to save the post')
         }

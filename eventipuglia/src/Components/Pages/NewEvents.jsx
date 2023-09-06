@@ -11,7 +11,11 @@ function NewEvents() {
 
   return (
    
-    <div className='w-100'><Button className='float-end me-5' onClick={routeNewEvent}> <FontAwesomeIcon icon={faPlus} className='me-2' />Crea Evento</Button></div>
+    <div className='row m-0 px-5'>
+       <div className='col'>
+       <Button className='float-end me-5' onClick={routeNewEvent}> <FontAwesomeIcon icon={faPlus} className='me-2' />Crea Evento</Button>
+       </div>
+      </div>
   
     
     )

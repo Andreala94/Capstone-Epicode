@@ -72,15 +72,15 @@ function NavBar() {
             {getUserAvatar() !== null &&
               <>
                 <span className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
-                <Button className='ms-2 rounded-circle p-1' variant="outline-success" >
+                <div className='ms-2 p-1 ' variant="outline-success" >
 
-                  <img
+                  <img className='rounded-circle'
                     src={getUserAvatar()}
                     alt="User Avatar"
                     style={{ maxWidth: '2rem' }}
 
                   />
-                </Button>
+                </div>
                 <Button className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
               </>
             }

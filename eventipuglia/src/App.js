@@ -4,6 +4,7 @@ import ErrorPage from '../src/Components/Pages/ErrorPage'
 import HomePage from './Components/Pages/HomePage';
 import Login from './Components/Pages/Login';
 import FormNewEvents from './Components/Pages/FormNewEvents';
+import  DettagliEvento  from './Components/Pages/DettagliEvento';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/newevent' element={<FormNewEvents />} />
+        <Route path='/dettagli/:id' element={<DettagliEvento />} />
 
 
 

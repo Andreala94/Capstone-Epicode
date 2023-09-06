@@ -54,7 +54,7 @@ const handleSubmit = async (event) => {
             const postFormData = {
                 titolo: titleValue,
                 descrizione: descrizioneValue,
-                luogo: luogoValue,
+                luogo: luogoValue.toUpperCase(),
                 datetime: dataValue,
                 prezzo: prezzoValue,
                 immagine: uploadedFile.imgUrl,

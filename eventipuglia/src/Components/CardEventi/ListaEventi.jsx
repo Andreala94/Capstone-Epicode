@@ -24,7 +24,8 @@ const ListaEventi = ( { eventi } ) => {
                                 className="mb-4"
                             >
                                 <CardEventi
-                                    key={evento.id}
+                                    
+                                    id={evento._id}
                                     img={evento.immagine}
                                     prezzo={evento.prezzo}
                                     title={evento.titolo}

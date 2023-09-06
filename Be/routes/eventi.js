@@ -89,6 +89,34 @@ EventiR.get("/eventi",    async (req, res) => {
 
 })
 
+EventiR.get('/eventi/:id', async (req, res) => {
+    const { id } = req.params
+
+    
+    try {
+        const evento = await Evento.findById(id)
+
+        if (!evento) {
+            return res.status(404).send({
+                statusCode: 404,
+                message: ` post with id ${id} not found!`
+            })}
+
+        res.status(200).send({
+            statusCode: 200,
+            evento: evento,
+        });
+
+
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "internal server Error",
+            error,
+        });
+    }
+
+})
 
 
 

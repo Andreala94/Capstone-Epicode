@@ -14,3 +14,7 @@ Content-Type: application/json
 ########
 GET http://localhost:6060/eventi
 Content-Type: application/json
+
+######
+GET http://localhost:6060/eventi/64f758aea039688dd47aa60b
+Content-Type: application/json

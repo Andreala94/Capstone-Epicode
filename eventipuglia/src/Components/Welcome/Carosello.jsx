@@ -15,35 +15,40 @@ function Carosello() {
               src="https://siviaggia.it/wp-content/uploads/sites/2/2019/08/puglia_poster.jpg" //1
               alt="First slide"
             />
-            <Carousel.Caption>
-
-
-            </Carousel.Caption>
           </Carousel.Item>
+
           <Carousel.Item className="carosello">
             <img
               className=" img-fluid "
-              src="https://turismo.puglia.it/wp-content/uploads/sites/124/castel-del-monte-hd.jpg" //2
+              src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1694104706/CapstoneEpicode/otranto-puglia_yipal8.jpg" //2
               alt="Second slide"
             />
+           </Carousel.Item>
 
-            <Carousel.Caption>
-
-
-            </Carousel.Caption>
-          </Carousel.Item>
           <Carousel.Item className="carosello">
             <img
               className=" img-fluid"
-              src="https://www.boatsharingpuglia.com/wp-content/uploads/2022/05/1-punta-prosciutt.jpg"
+              src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1694104762/CapstoneEpicode/cava_hhvgfo.jpg"
               alt="Third slide"
             />
+           </Carousel.Item>
 
-            <Carousel.Caption>
+           <Carousel.Item className="carosello">
+            <img
+              className=" img-fluid"
+              src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1694104705/CapstoneEpicode/maldive-del-salento_zszz5f.jpg"
+              alt="Third slide"
+            />
+           </Carousel.Item>
 
+           <Carousel.Item className="carosello">
+            <img
+              className=" img-fluid"
+              src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1694104706/CapstoneEpicode/Martina_Franca_vcdws3.jpg"
+              alt="Third slide"
+            />
+           </Carousel.Item>
 
-            </Carousel.Caption>
-          </Carousel.Item>
         </Carousel>
       </div>
     </div>

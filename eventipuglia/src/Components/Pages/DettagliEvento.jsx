@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import NavBar from '../NavBar/NavBar'
 import { useParams } from 'react-router-dom'
 
-import { Button } from 'react-bootstrap'
+import { Button, Row, Col, Container} from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
+import './CSS/DettagliEvento.css'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,9 +51,10 @@ getEventoById()
     <>
     <NavBar />
 
-    <div>DettagliEvento:
-
-    <Card >
+    <Container className='d-flex justify-content-center p-5' >
+      <Row>
+        <Col>
+        <Card>
         <Card.Img variant="top" src={imgValue} style={{"width": "100%" , "height": "auto"}} />
         <Card.Body>
           <label className="mb-1">Titolo:</label>
@@ -74,7 +76,10 @@ getEventoById()
           <Button variant="primary">Acquista</Button>
         </Card.Body>
       </Card> 
-    </div>
+        </Col>
+      </Row>
+   
+    </Container>
     </>
     
   )

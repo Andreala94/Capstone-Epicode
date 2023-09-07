@@ -4,13 +4,14 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../NavBar/NavBar.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+
 
 
 
@@ -67,8 +68,8 @@ function NavBar() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
-            <Button className='ms-2' variant="outline-success"><FontAwesomeIcon icon={faShoppingCart} /></Button>
+            <Button variant="outline-success"><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
+            <Button className='ms-2' variant="outline-success" ><FontAwesomeIcon icon={faShoppingCart} /></Button>
             {getUserAvatar() !== null &&
               <>
                 <span className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>

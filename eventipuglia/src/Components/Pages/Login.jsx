@@ -5,6 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Pages/CSS/Login.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+
 
 function Login(){
 
@@ -202,20 +205,24 @@ function Login(){
             </span>
           </div>
           <div className="form-group mt-3">
-            <label>Email address</label>
-            <input
+            <label>Email  <FontAwesomeIcon icon={faEnvelope} /></label>
+            <input 
               type="email"
+              placeholder="Email "
+              
               className="form-control mt-1 border border-dark"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,
                 email:e.target.value
             })}
             />
+            
           </div>
           <div className="form-group mt-3">
-            <label>Password</label>
+            <label>Password <FontAwesomeIcon icon={faLock} /></label>
             <input
               type="password"
+              placeholder="Password"
               className="form-control mt-1 border border-dark"
               onChange={(e)=>setLoginFormData({
                 ...loginFormData,

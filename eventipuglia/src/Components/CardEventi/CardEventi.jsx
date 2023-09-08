@@ -25,7 +25,7 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
         <Card.Title>{title}</Card.Title>
 
         <label className="mb-1 fw-bold">Descrizione:</label>
-         <Card.Text >{truncate(descrizione, 10, 10)}</Card.Text> 
+         <Card.Text >{truncate(descrizione, 50, 100)}</Card.Text> 
 
         <label className="mb-1">Luogo:</label>
         <Card.Text className="fw-bold"><FontAwesomeIcon icon={faLocationDot} /> {luogo}</Card.Text>

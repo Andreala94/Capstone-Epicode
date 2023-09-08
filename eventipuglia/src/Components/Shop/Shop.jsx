@@ -1,12 +1,35 @@
-import React from "react";
-import '../Shop/Shop.css'
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 
-const Shop = () => {
+function Shop( ) {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+
   return (
-<div></div>
+    <>
+   <Button className='ms-2' variant="outline-success" onClick={handleShow}><FontAwesomeIcon icon={faShoppingCart} /></Button>
 
-    )
+      <Offcanvas  show={show} onHide={handleClose} placement="end">
+        <Offcanvas.Header closeButton>
+        <Offcanvas.Title  >
+            <FontAwesomeIcon icon={faShoppingCart}/> ( Cad. )
+            </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Aggiungi un evento...
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
 }
-export default Shop
+
+export default Shop;

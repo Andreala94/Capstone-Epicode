@@ -15,9 +15,9 @@ function App() {
         <Route>
         <Route exact path="/" element={<HomePage />} />
         <Route path='/login' element={<Login />} />
-        <Route element={<ProdectRouteCreaEvento />}>
+        {/* <Route element={<ProdectRouteCreaEvento />}> */}
             <Route path='/newevent' element={<FormNewEvents />} />
-        </Route>
+        {/* </Route> */}
         <Route path='/dettagli/:id' element={<DettagliEvento />} />
 
 

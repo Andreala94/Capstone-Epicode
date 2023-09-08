@@ -11,19 +11,18 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
-
-
+import Shop from '../Shop/Shop';
 
 
 
 
 function NavBar() {
+
   const navigate = useNavigate();
   const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
-  
 
-  const getUserAvatar = () => {
+  
+ const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
   }
   const getUserName = () => {
@@ -64,12 +63,13 @@ function NavBar() {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Cerca Luogo"
               className="me-2"
               aria-label="Search"
             />
             <Button variant="outline-success"><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
-            <Button className='ms-2' variant="outline-success" ><FontAwesomeIcon icon={faShoppingCart} /></Button>
+            <Shop /> 
+           
             {getUserAvatar() !== null &&
               <>
                 <span className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
@@ -92,8 +92,14 @@ function NavBar() {
 
           </Form>
         </Navbar.Collapse>
+
+        
       </Container>
+
+      
     </Navbar>
+
+
   );
 }
 

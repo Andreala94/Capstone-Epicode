@@ -12,7 +12,7 @@ const ListaEventi = ( { eventi } ) => {
 
     return (
         <>
-            <Container className="mt-5">
+            <Container className="mt-5" id='listaeventi'>
                 <Row>
                     {eventi &&
                         eventi.map((evento) => (

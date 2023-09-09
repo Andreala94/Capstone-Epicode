@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../NavBar/NavBar.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -16,7 +16,7 @@ import Shop from '../Shop/Shop';
 
 
 
-function NavBar() {
+function NavBar( {  setArrayEventi, totaleEventi } ) {
 
   const navigate = useNavigate();
   const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
@@ -41,6 +41,29 @@ function NavBar() {
   }
 
 
+    //funzione ricerca 
+
+    const [luogo, setLuogo] = useState('');
+    const [eventiFiltrati, setEventiFiltrati]= useState([])
+
+  const handleLuogoChange = (event) => {
+    setLuogo(event.target.value);
+  };
+ 
+  const handleFilterClick = () => {
+    console.log('entra');
+    const filtered = totaleEventi.filter((evento) =>
+      evento.luogo.toLowerCase().includes(luogo.toLowerCase())
+    );
+    setArrayEventi(filtered);
+    scroll()
+  };
+  
+// scrollare la pagina al momento del filtro
+  const scroll = () => {
+    const section = document.querySelector( '#listaeventi' );
+    section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+  };
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary bgcolor" >
@@ -66,8 +89,10 @@ function NavBar() {
               placeholder="Cerca Luogo"
               className="me-2"
               aria-label="Search"
+             onChange={handleLuogoChange}
+              
             />
-            <Button variant="outline-success"><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
+            <Button variant="outline-success" onClick={handleFilterClick}><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
             <Shop /> 
            
             {getUserAvatar() !== null &&

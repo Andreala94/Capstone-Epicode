@@ -10,6 +10,7 @@ import { Footer } from "../Footer/Footer"
 function HomePage(){
 
   const [arrayEventi, setArrayEventi] = useState([])
+  const [totaleEventi, setTotaleEventi] = useState([])
 
     const getEventiApi = async () => {
         try {
@@ -18,6 +19,7 @@ function HomePage(){
             const response = await data.json()
 
             setArrayEventi(response.eventi)
+            setTotaleEventi(response.eventi)
         } catch (error) {
             console.log('Errore nella risposta!')
         }
@@ -28,9 +30,11 @@ function HomePage(){
     }, [])
 
 
+
+
   return(
     <>
-    <NavBar />
+    <NavBar totaleEventi={totaleEventi} setArrayEventi={setArrayEventi} />
     <Carosello />  
     <NewEvents />
     <ListaEventi eventi={arrayEventi} />

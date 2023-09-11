@@ -1,10 +1,13 @@
 import React from "react";
 import { Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 
 
@@ -43,7 +46,8 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
     })}
 
     localStorage.setItem("carrello" , JSON.stringify(arrayBiglietti) ) //prendiamo il nostro carrello di oggetti e lo trasformiamo in stringa
-    return;
+    return
+     
   }
 
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Button, Container, Row, Col, Offcanvas, Card } from 'react-bootstrap';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ function Shop() {
 
 
   const biglietti = JSON.parse(localStorage.getItem("carrello")); // prendiamo l'oggetto salvato nel localstorage
-  
+
 
 
 
@@ -30,10 +30,24 @@ function Shop() {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
+          <Container>
+            <Row>
+              <Col>
+                {biglietti ? (
+                  biglietti.map((biglietto) => (
+                    <Card 
+                    key={biglietto.id}
+                    img={biglietto.img}
+                    prezzo={biglietto.prezzo}
+                    title={biglietto.titolo}
+                    
+                    >
+                      {JSON.stringify(biglietto)}
+                      </Card>))) : (<p>Carello Vuoto...</p>)}
+              </Col>
+            </Row>
+          </Container>
 
-          {biglietti ? (
-            biglietti.map((biglietto) => (
-              <p key={biglietto.id}>{JSON.stringify(biglietto)}</p>))  ) : ( <p>Carello Vuoto...</p>)} 
         </Offcanvas.Body>
       </Offcanvas>
     </>

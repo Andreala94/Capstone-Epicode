@@ -99,3 +99,7 @@ footer{
   footer a:hover{
     color: #eb2f06;
   }
+  .bgcolor{
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Utilizza un'opacità per rendere la navbar trasparente */
+    color: black;
+  }

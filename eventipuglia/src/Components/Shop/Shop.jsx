@@ -7,25 +7,33 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function Shop( ) {
+function Shop() {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  const biglietti = JSON.parse(localStorage.getItem("carrello")); // prendiamo l'oggetto salvato nel localstorage
   
+
+
 
   return (
     <>
-   <Button className='ms-2' variant="outline-success" onClick={handleShow}><FontAwesomeIcon icon={faShoppingCart} /></Button>
+      <Button className='ms-2' variant="outline-success" onClick={handleShow}><FontAwesomeIcon icon={faShoppingCart} /></Button>
 
-      <Offcanvas  show={show} onHide={handleClose} placement="end">
+      <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-        <Offcanvas.Title  >
-            <FontAwesomeIcon icon={faShoppingCart}/> ( Cad. )
-            </Offcanvas.Title>
+          <Offcanvas.Title  >
+            <FontAwesomeIcon icon={faShoppingCart} /> ( Cad. )
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Aggiungi un evento...
+
+          {biglietti ? (
+            biglietti.map((biglietto) => (
+              <p key={biglietto.id}>{JSON.stringify(biglietto)}</p>))  ) : ( <p>Carello Vuoto...</p>)} 
         </Offcanvas.Body>
       </Offcanvas>
     </>

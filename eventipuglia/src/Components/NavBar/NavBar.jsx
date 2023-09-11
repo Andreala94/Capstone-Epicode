@@ -64,9 +64,9 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
     const section = document.querySelector( '#listaeventi' );
     section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   };
-
+//bg-body-tertiary
   return (
-    <Navbar expand="lg" className="bg-body-tertiary bgcolor" >
+    <Navbar  expand="lg" className=" bgcolor" >
       <Container fluid>
         <Navbar.Brand href="#" className='logo'>
         <img src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1693936569/CapstoneEpicode/logo_made_in_valle_d_itria_amrg1b.png" alt="Descrizione dell'immagine" />
@@ -79,7 +79,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
             navbarScroll
           >
             <Nav.Link>
-              <Link className='text-decoration-none text-dark fw-bold font' to="/">Eventi Puglia(da definire)</Link>
+              <Link className='text-decoration-none text-dark  font' to="/">Eventi Puglia</Link>
             </Nav.Link>
 
           </Nav>

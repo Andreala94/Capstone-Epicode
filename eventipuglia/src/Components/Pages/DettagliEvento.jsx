@@ -37,7 +37,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
         setImgValue(evento.evento.immagine)
         setDescrizioneValue(evento.evento.descrizione)
         setPrezzoValue(evento.evento.prezzo)
-        setDataValue(evento.evento.detetime)
+        setDataValue(evento.evento.datetime)
 
        
     } catch (error) {

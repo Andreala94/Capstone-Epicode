@@ -3,9 +3,9 @@ import '../Footer/Footer.css'
 
 export const Footer = () => {
   return (
-    <footer>
-         <div>
-        <div className="content mt-5">
+    <footer >
+         <div className='bgcolor'>
+        <div className="content mt-5 ">
          
             <div className="upper">
               <div className="topic text-center">About us</div>

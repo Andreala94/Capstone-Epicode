@@ -19,8 +19,9 @@ const ListaEventi = ( { eventi } ) => {
                             <Col
                                 
                                 md={6}
-                                lg={3}
-                                sm={4}
+                                lg={4}
+                                sm={6}
+                                xl={3}
                                 className="mb-4"
                             >
                                 <CardEventi

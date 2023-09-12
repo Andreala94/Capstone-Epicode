@@ -20,14 +20,17 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
     return str.length > max ? str.substring(0, len) + "..." : str;
   }
 
- 
+ //? Funzione al click del bottone 'acquista' mi deve salvare tramite id in localStorage il biglietto
+
   const acquistoBiglietto = () =>{
 
     let arrayBiglietti = JSON.parse(localStorage.getItem("carrello"))
 
     if(arrayBiglietti === null){
-       arrayBiglietti = [] // array vuoto
+       arrayBiglietti = [] 
     }
+
+   
 
     const biglietto = arrayBiglietti.find(biglietto => biglietto.id === id) //cerchiamo l'id nel nostro biglietto
     console.log(biglietto);
@@ -49,6 +52,10 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
     return
      
   }
+
+ 
+
+  
 
   return (
     <Card id={id}>

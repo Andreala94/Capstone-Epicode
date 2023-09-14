@@ -7,7 +7,12 @@ import { useNavigate } from 'react-router-dom';
 
 function NewEvents() {
     const navigate = useNavigate();
-    const routeNewEvent = () => { navigate('/newevent') }
+    const routeNewEvent = () => {
+      if( localStorage.getItem('userToken') === null  ) {
+        navigate('/login?notAuthenticated')
+      }else{
+        navigate('/newevent')
+      }}
 
   return (
    

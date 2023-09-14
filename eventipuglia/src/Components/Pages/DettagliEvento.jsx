@@ -9,9 +9,12 @@ import './CSS/DettagliEvento.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import {  toast } from 'react-toastify';
 
 
- const DettagliEvento = () => {
+
+
+ const DettagliEvento = (  {img, prezzo, title }) => {
 
     const [titleValue, setTitleValue] = useState('')
     const [descrizioneValue, setDescrizioneValue] = useState('')
@@ -47,6 +50,50 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 getEventoById()
 
+
+const acquistoBiglietto = () =>{
+
+  let arrayBiglietti = JSON.parse(localStorage.getItem("carrello"))
+
+  if(arrayBiglietti === null){
+     arrayBiglietti = [] 
+  }
+
+ 
+
+  const biglietto = arrayBiglietti.find(biglietto => biglietto.id === id) //cerchiamo l'id nel nostro biglietto
+  console.log(biglietto);
+  
+
+  if(biglietto){
+    biglietto.quantita += 1
+  }else{
+    arrayBiglietti.push({
+    id: id,
+    titolo: title,
+    prezzo: prezzo,
+    quantita: 1,
+    immagine: img
+    
+  })}
+
+  localStorage.setItem("carrello" , JSON.stringify(arrayBiglietti) ) //prendiamo il nostro carrello di oggetti e lo trasformiamo in stringa
+  
+  toast.success('Evento Aggiunto al carrello!', { 
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+  
+  
+   
+}
+
   return (
     <>
     <NavBar />
@@ -73,7 +120,7 @@ getEventoById()
           <label className="mb-1">Prezzo:</label>
           <Card.Text className="fw-bold">{prezzoValue}</Card.Text>
 
-          <Button variant="primary">Acquista</Button>
+          <Button variant="primary" onClick={acquistoBiglietto}>Acquista</Button>
         </Card.Body>
       </Card> 
         </Col>

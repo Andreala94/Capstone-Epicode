@@ -17,8 +17,6 @@ function Shop() {
   const biglietti = JSON.parse(localStorage.getItem("carrello")); // prendiamo l'oggetto salvato nel localstorage
 
 
-
-
   return (
     <>
       <Button className='ms-2' variant="outline-success" onClick={handleShow}><FontAwesomeIcon icon={faShoppingCart} /></Button>
@@ -35,16 +33,35 @@ function Shop() {
               <Col>
                 {biglietti ? (
                   biglietti.map((biglietto) => (
-                    <Card 
-                    key={biglietto.id}
-                    img={biglietto.img}
-                    prezzo={biglietto.prezzo}
-                    title={biglietto.titolo}
-                    
-                    >
-                      {JSON.stringify(biglietto)}
-                      </Card>))) : (<p>Carello Vuoto...</p>)}
-              </Col>
+                    <>
+                    <div className='d-flex ' >
+                        <Row>
+                          <Col className='col-4'>
+                            
+                               <Card.Img variant="top" src={biglietto.immagine} style={{ "width": "100%" }} />
+                             </Col>
+                             <Col className='col-7'>
+                                <Card.Title>{biglietto.titolo}</Card.Title>
+
+                               
+                              <Card.Text className="fw-bold">{biglietto.prezzo}</Card.Text>
+                             </Col>
+                             <Col className='col-1'>
+                             <Card.Text className="fw-bold">{biglietto.quantita}</Card.Text>
+                             </Col>
+                     
+                          
+                         </Row>
+                      </div>
+                      <hr></hr>
+                      </>
+                      )
+                      )
+                      )
+                       : (<p>Carello Vuoto...</p>)}
+                      
+
+               </Col>
             </Row>
           </Container>
 

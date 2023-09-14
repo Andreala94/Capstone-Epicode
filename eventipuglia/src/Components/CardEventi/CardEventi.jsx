@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -49,11 +50,21 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
     })}
 
     localStorage.setItem("carrello" , JSON.stringify(arrayBiglietti) ) //prendiamo il nostro carrello di oggetti e lo trasformiamo in stringa
-    return
+    
+    toast.success('Evento Aggiunto al carrello!', { 
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+    
+    
      
   }
-
- 
 
   
 
@@ -82,6 +93,8 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
         <Button onClick={acquistoBiglietto} variant="primary">Acquista</Button>
       </Card.Body>
     </Card>
+
+    
   )
 }
 

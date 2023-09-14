@@ -6,6 +6,9 @@ import '../NavBar/NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -64,8 +67,10 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
     const section = document.querySelector( '#listaeventi' );
     section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
   };
-//bg-body-tertiary
+
   return (
+    <>
+    
     <Navbar  expand="lg" className=" bgcolor" >
       <Container fluid>
         <Navbar.Brand href="#" className='logo'>
@@ -86,7 +91,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Cerca Luogo"
+              placeholder="Cerca Città"
               className="me-2"
               aria-label="Search"
              onChange={handleLuogoChange}
@@ -107,11 +112,11 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
 
                   />
                 </div>
-                <Button className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
+                <Button variant="outline-success bg-light"  className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
               </>
             }
             {getUserAvatar() === null &&
-              <Button className="bg-info ms-2 me-4" onClick={routeLogin}> Login</Button>
+              <Button variant="outline-success" className=" ms-2 me-4" onClick={routeLogin}> Login</Button>
             }
 
 
@@ -123,7 +128,8 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
 
       
     </Navbar>
-
+    <ToastContainer />
+   </> 
 
   );
 }

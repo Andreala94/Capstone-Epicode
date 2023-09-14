@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import NavBar from '../NavBar/NavBar'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Pages/CSS/Login.css'
@@ -17,6 +17,24 @@ function Login(){
     const navigate = useNavigate();
     const [authMode, setAuthMode] = useState("signin")
 
+
+    const [searchParams, setSearchParams] = useSearchParams();
+      console.log(searchParams.get("notAuthenticated") );  
+      if(searchParams.get('notAuthenticated')!== null){
+        console.log('notifica');
+        toast.error('Non Autenticato!', { 
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
+
+      }
+        
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
@@ -108,6 +126,7 @@ function Login(){
   return(
     <>
     <NavBar />
+   
 
   {
     authMode !== "signin" && ( 
@@ -152,7 +171,7 @@ function Login(){
           />
         </div>
         <div className="form-group mt-3">
-          <label>Password</label>
+          <label>Password (min 10 caratteri) </label>
           <input
             type="password"
             className="form-control mt-1 border border-dark"
@@ -242,7 +261,7 @@ function Login(){
 
     )
   }
-  <ToastContainer />
+  
   </>
   )
   

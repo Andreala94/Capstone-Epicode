@@ -52,7 +52,7 @@ const Autore = new mongoose.Schema(
   Autore.pre('save', async function(next){
     const user = this
     try {
-      const salt = await bcrypt.genSalt(10) 
+      const salt = await bcrypt.genSalt(10) //Password min 10 caratteri
       const hash = await bcrypt.hash(user.password, salt)
       user.password= hash
       next()

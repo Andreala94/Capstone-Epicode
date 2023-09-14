@@ -6,6 +6,9 @@ import ListaEventi from "../CardEventi/ListaEventi"
 import { Footer } from "../Footer/Footer"
 
 
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function HomePage(){
 
@@ -14,7 +17,7 @@ function HomePage(){
 
     const getEventiApi = async () => {
         try {
-            const data = await fetch('http://localhost:6060/eventi')
+            const data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/eventi`)
 
             const response = await data.json()
 
@@ -39,6 +42,7 @@ function HomePage(){
     <NewEvents />
     <ListaEventi eventi={arrayEventi} />
     <Footer />
+   
     </>
 
   

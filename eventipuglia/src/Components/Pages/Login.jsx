@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import NavBar from '../NavBar/NavBar'
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Pages/CSS/Login.css'
 
@@ -19,7 +19,9 @@ function Login(){
 
 
     const [searchParams, setSearchParams] = useSearchParams();
+
       console.log(searchParams.get("notAuthenticated") );  
+      
       if(searchParams.get('notAuthenticated')!== null){
         console.log('notifica');
         toast.error('Non Autenticato!', { 
@@ -133,14 +135,14 @@ function Login(){
     <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
     <form className="Auth-form form-color p-4 border rounded-5" onSubmit={handleRegister}>
       <div className="Auth-form-content">
-        <h3 className="Auth-form-title text-center ">Registrati</h3>
-        <div className="text-center">
+        <h3 className="Auth-form-title text-center">Registrati</h3>
+        <div className="text-center  fw-bold">
           Sei registrato?{" "}
           <span className="link-primary" onClick={changeAuthMode}>
             Login
           </span>
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 fw-bold">
           <label>Nome</label>
           <input
             type="text"
@@ -150,7 +152,7 @@ function Login(){
                 name:e.target.value})}
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 fw-bold">
           <label>Cognome</label>
           <input
             type="text"
@@ -160,7 +162,7 @@ function Login(){
                 surname:e.target.value})}
           />
         </div>
-        <div className="form-group mt-3 ">
+        <div className="form-group mt-3 fw-bold ">
           <label>Email address</label>
           <input
             type="email"
@@ -170,7 +172,7 @@ function Login(){
                 email:e.target.value})}
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 fw-bold">
           <label>Password (min 10 caratteri) </label>
           <input
             type="password"
@@ -180,7 +182,7 @@ function Login(){
                 password:e.target.value})}
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 fw-bold">
           <label>Avatar</label>
           <input
             type="file"
@@ -189,7 +191,7 @@ function Login(){
             onChange={onChangeHandleFile}
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-3 fw-bold">
           <label>Data di Nascita</label>
           <input
             type="date"
@@ -201,7 +203,7 @@ function Login(){
           />
         </div>
         <div className="d-grid gap-2 mt-3">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-success">
             Registrati
           </button>
         </div>
@@ -217,13 +219,13 @@ function Login(){
       <form className="Auth-form form-color p-4 border rounded-5 " onSubmit={handleLogin}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title text-center">Login</h3>
-          <div className="text-center">
+          <div className="text-center fw-bolder">
           Non sei registrato? {" "}
-            <span className="link-primary" onClick={changeAuthMode}>
+            <span className="link-primary " onClick={changeAuthMode}>
               Register
             </span>
           </div>
-          <div className="form-group mt-3">
+          <div className="form-group mt-3 fw-bold">
             <label>Email  <FontAwesomeIcon icon={faEnvelope} /></label>
             <input 
               type="email"
@@ -237,7 +239,7 @@ function Login(){
             />
             
           </div>
-          <div className="form-group mt-3">
+          <div className="form-group mt-3 fw-bold">
             <label>Password <FontAwesomeIcon icon={faLock} /></label>
             <input
               type="password"
@@ -250,7 +252,7 @@ function Login(){
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-success">
               Accedi
             </button>
           </div>

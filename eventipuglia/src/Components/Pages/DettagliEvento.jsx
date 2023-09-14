@@ -120,7 +120,7 @@ const acquistoBiglietto = () =>{
           <label className="mb-1">Prezzo:</label>
           <Card.Text className="fw-bold">{prezzoValue}</Card.Text>
 
-          <Button variant="primary" onClick={acquistoBiglietto}>Acquista</Button>
+          <Button  variant="outline-light bg-success" onClick={acquistoBiglietto}>Acquista</Button>
         </Card.Body>
       </Card> 
         </Col>

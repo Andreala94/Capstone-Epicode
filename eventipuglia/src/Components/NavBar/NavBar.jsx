@@ -6,7 +6,7 @@ import '../NavBar/NavBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Button from 'react-bootstrap/Button';
@@ -84,7 +84,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
             navbarScroll
           >
             <Nav.Link>
-              <Link className='text-decoration-none text-dark  font' to="/">Eventi Puglia</Link>
+              <Link className='text-decoration-none text-dark fw-bold ' to="/"><h4>Eventi Puglia</h4></Link>
             </Nav.Link>
 
           </Nav>

@@ -23,8 +23,8 @@ function Shop() {
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title  >
-            <FontAwesomeIcon icon={faShoppingCart} /> ( Cad. )
+          <Offcanvas.Title>
+            <FontAwesomeIcon icon={faShoppingCart} />  ( Cad. )
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>

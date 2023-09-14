@@ -2,14 +2,12 @@ import React from "react";
 import { Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
-
-
-
+import '../CardEventi/CardEventi.css'
 
 
 //? Struttura Card 
@@ -53,7 +51,7 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
     
     toast.success('Evento Aggiunto al carrello!', { 
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -61,15 +59,12 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
       progress: undefined,
       theme: "colored",
       });
-    
-    
      
   }
 
-  
 
   return (
-    <Card id={id}>
+    <Card id={id} style={{ "margin": "0.5rem"}} >
       <Card.Img variant="top" src={img} style={{ "width": "100%", "height": "auto" }} />
       <Card.Body>
         <label className="mb-1">Titolo:</label>
@@ -90,7 +85,7 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
         <label className="mb-1">Prezzo:</label>
         <Card.Text className="fw-bold">{prezzo}</Card.Text>
 
-        <Button onClick={acquistoBiglietto} variant="primary">Acquista</Button>
+        <Button onClick={acquistoBiglietto} variant="btn btn-success">Acquista</Button>
       </Card.Body>
     </Card>
 

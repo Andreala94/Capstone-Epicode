@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, {  useState } from "react"
 import NavBar from '../NavBar/NavBar'
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../Pages/CSS/Login.css'
@@ -15,31 +15,12 @@ function Login(){
     const [registerFormData, setRegisterFormData ] = useState({})
     const [avatar, setAvatar] = useState(null)
     const navigate = useNavigate();
-    const [authMode, setAuthMode] = useState("signin")
+    const [authMode, setAuthMode] = useState("login")
 
-
-    const [searchParams, setSearchParams] = useSearchParams();
-
-      console.log(searchParams.get("notAuthenticated") );  
-      
-      if(searchParams.get('notAuthenticated')!== null){
-        console.log('notifica');
-        toast.error('Non Autenticato!', { 
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          });
-
-      }
-        
+ 
 
   const changeAuthMode = () => {
-    setAuthMode(authMode === "signin" ? "signup" : "signin")
+    setAuthMode(authMode === "signin" ? "login" : "signin")
   }
 //Login 
   const handleLogin = async(e)=>{
@@ -50,7 +31,7 @@ function Login(){
             body: JSON.stringify(loginFormData),
             headers: {"Content-Type":"application/json"}
         })
-        const risposta= await response.json()
+        const risposta = await response.json()
             if(response.status===200){
               // utente loggato con successo 
               
@@ -82,7 +63,7 @@ function Login(){
         
     }
   }
-
+//Registrazione Avatar
   const uploadAvatar = async (file)=>{
     const avatarFile = new FormData()
     avatarFile.append('avatar', file)
@@ -113,7 +94,21 @@ function Login(){
             headers: {"Content-Type":"application/json"}
         })
             
-        return await response.json()
+         await response.json()
+         toast.success("Registrazione avvenuta con successo!", { 
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
+          setAuthMode('login')
+
+
+
     } catch (error) {
         console.log(error.json());
         
@@ -131,7 +126,7 @@ function Login(){
    
 
   {
-    authMode !== "signin" && ( 
+    authMode === "signin" && ( 
     <div className="Auth-form-container d-flex justify-content-center align-items-center p-5">
     <form className="Auth-form form-color p-4 border rounded-5" onSubmit={handleRegister}>
       <div className="Auth-form-content">
@@ -214,7 +209,7 @@ function Login(){
   )
   }
   {
-    authMode === "signin" && (
+    authMode === "login" && (
       <div className="Auth-form-container d-flex justify-content-center align-items-center p-5" >
       <form className="Auth-form form-color p-4 border rounded-5 " onSubmit={handleLogin}>
         <div className="Auth-form-content">

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
 import '../NavBar/NavBar.css';
-
+//icone
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
+//Notifiche Dinamiche
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,15 +18,17 @@ import Shop from '../Shop/Shop';
 
 
 
+
 function NavBar( {  setArrayEventi, totaleEventi } ) {
 
   const navigate = useNavigate();
   const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
 
-  
+  //Funzione per prendere l'avatar salvato
  const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
   }
+  //Funzione per prendere il nome utente Loggato
   const getUserName = () => {
     const name = JSON.parse(localStorage.getItem('userName'))
     return name.charAt(0).toUpperCase() + name.slice(1)
@@ -47,7 +48,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
     //funzione ricerca 
 
     const [luogo, setLuogo] = useState('');
-    const [eventiFiltrati, setEventiFiltrati]= useState([])
+    
 
   const handleLuogoChange = (event) => {
     setLuogo(event.target.value);
@@ -84,7 +85,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
             navbarScroll
           >
             <Nav.Link>
-              <Link className='text-decoration-none text-dark fw-bold ' to="/"><h4>Eventi Puglia</h4></Link>
+              <Link className='text-decoration-none text-dark fw-bold ' to="/"><h4><em>Eventi Puglia</em></h4></Link>
             </Nav.Link>
 
           </Nav>

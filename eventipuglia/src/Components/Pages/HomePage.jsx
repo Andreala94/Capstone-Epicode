@@ -39,7 +39,7 @@ function HomePage(){
     <>
     <NavBar totaleEventi={totaleEventi} setArrayEventi={setArrayEventi} />
     <Carosello />  
-    <NewEvents />
+    <NewEvents  />
     <ListaEventi eventi={arrayEventi} />
     <Footer />
    

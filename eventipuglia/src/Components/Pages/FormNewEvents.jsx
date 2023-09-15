@@ -79,13 +79,16 @@ const handleSubmit = async (event) => {
     }
 }
 
-
-
+// Per prendere il nome dell'utente loggato
+const getUserName = () => {
+    const name = JSON.parse(localStorage.getItem('userName'))
+    return name.charAt(0).toUpperCase() + name.slice(1)
+  }
   return (
    <>
    <NavBar />
 
-     <h1 className='text-light d-flex justify-content-center p-3'>Benvenuto/a, inizia subito, crea il tuo evento! </h1>
+     <h1 className='text-light d-flex justify-content-center p-3'><mark>Benvenuto/a, {getUserName()} inizia subito. Crea il tuo evento!</mark> </h1>
 
    <Form
                 className="m-5 form-color p-4 border rounded-5 "

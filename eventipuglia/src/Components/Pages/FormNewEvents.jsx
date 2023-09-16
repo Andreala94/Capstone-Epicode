@@ -159,8 +159,8 @@ const getUserName = () => {
                     />
                 </Form.Group>
 
-                <Button className="ms-1 mt-5" type="submit">
-                    Crea Post
+                <Button variant="success" className="ms-1 mt-5" type="submit">
+                    Crea Evento
                 </Button>
             </Form>
 

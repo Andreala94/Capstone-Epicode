@@ -15,7 +15,7 @@ function NewEvents( ) {
     const handleRedirect = ()=>{
       if( localStorage.getItem('userToken') === null  ){
        
-        toast.error('Non Autenticato!', { 
+        toast.error('Non Autenticato! Accedi', { 
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,

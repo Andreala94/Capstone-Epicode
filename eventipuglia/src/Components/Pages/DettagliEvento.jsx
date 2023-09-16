@@ -118,7 +118,7 @@ const acquistoBiglietto = () =>{
         
 
           <label className="mb-1">Prezzo:</label>
-          <Card.Text className="fw-bold">{prezzoValue}</Card.Text>
+          <Card.Text className="fw-bold">{prezzoValue === 0 ? "Gratis" : (prezzoValue + "€")}</Card.Text>
 
           <Button  variant="outline-light bg-success" onClick={acquistoBiglietto}>Acquista</Button>
         </Card.Body>

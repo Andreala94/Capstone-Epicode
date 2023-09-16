@@ -83,7 +83,7 @@ const CardEventi = ({ img, prezzo, title, luogo, data, descrizione, id }) => {
         <Card.Text><Link to={`/dettagli/${id}`}>Dettagli</Link></Card.Text>
 
         <label className="mb-1">Prezzo:</label>
-        <Card.Text className="fw-bold">{prezzo}</Card.Text>
+        <Card.Text className="fw-bold">{prezzo === 0 ? "Gratis" : (prezzo + "€")}</Card.Text>
 
         <Button onClick={acquistoBiglietto} variant="btn btn-success">Acquista</Button>
       </Card.Body>

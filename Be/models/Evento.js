@@ -23,7 +23,7 @@ const Evento = new mongoose.Schema(
             required: true,
         },
         prezzo: {
-            type: String,
+            type: Number,
             required: true,
         },
         datetime:{

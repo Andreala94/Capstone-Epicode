@@ -56,7 +56,7 @@ const handleSubmit = async (event) => {
                 descrizione: descrizioneValue,
                 luogo: luogoValue.toUpperCase(),
                 datetime: dataValue,
-                prezzo: prezzoValue,
+                prezzo: parseInt(prezzoValue),
                 immagine: uploadedFile.imgUrl,
             }
 

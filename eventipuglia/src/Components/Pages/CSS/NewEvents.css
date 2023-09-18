@@ -1,8 +1,10 @@
 @media (max-width: 375px ) {
     #bottone{
-        margin-top: 2rem;
-        margin-left: 7rem;
-        
-        
+        margin-top: 3rem;
+        margin-right: 0 !important;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        text-align: center;
     }
 }

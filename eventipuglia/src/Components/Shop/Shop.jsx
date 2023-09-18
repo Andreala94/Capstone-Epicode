@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Container, Row, Col, Offcanvas, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,8 +13,15 @@ function Shop() {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [carrello, setCarrello] = useState(JSON.parse(localStorage.getItem("carrello")) || []);
+  const handleShow = () => {
+    setCarrello(JSON.parse(localStorage.getItem("carrello"))|| [])  
+    setShow(true);
+  }
+  const [carrello, setCarrello] = useState([]);
+
+  
+    
+  
 
   const navigate = useNavigate();
   const routeAcquista = () => { navigate('/profilo') }
@@ -24,8 +31,8 @@ function Shop() {
   const calcolaTotaleCarrello = () => {
     let totale = 0;
 
-    if (biglietti) {
-      for (const biglietto of biglietti) {
+    if (carrello) {
+      for (const biglietto of carrello) {
         if (parseInt(biglietto.prezzo) !== NaN) {
           totale += parseInt(biglietto.prezzo) * biglietto.quantita
         }
@@ -38,9 +45,9 @@ function Shop() {
   //Rimozione biglietto dal carrello
   const rimuoviBiglietto = (id) => {
 
-
+    const carrello = JSON.parse(localStorage.getItem("carrello"))
     const nuovoCarrello = carrello.filter((biglietto) => biglietto.id !== id);
-    localStorage.removeItem("carrello", id);
+    
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
 
@@ -49,20 +56,29 @@ function Shop() {
 
 
 
-  //Incremento e decremento quantità
-  const incrementaQuantita = (id) => {
+  //Incremento e decremento quantità 
+  const incrementaQuantita = (id, incremento ) => {
+    
+    const carrello = JSON.parse(localStorage.getItem("carrello"))
+    const bigliettoEvento = carrello.find((biglietto) => biglietto.id === id);
 
-    const bigliettoDaIncrementare = carrello.find((biglietto) => biglietto.id === id);
+    if (bigliettoEvento ) {
+    //il biglietto esiste nel carrello
 
-    if (bigliettoDaIncrementare) {
+     if(incremento === true) {
+      bigliettoEvento.quantita++;
+      
+     }else if(bigliettoEvento.quantita >1){
+      bigliettoEvento.quantita--;
+     }
 
-      bigliettoDaIncrementare.quantita++;
       localStorage.setItem("carrello", JSON.stringify(carrello));
-      setCarrello([...carrello]);
+      setCarrello(carrello)
+      
     }
   };
 
-  const biglietti = JSON.parse(localStorage.getItem("carrello")); // prendiamo l'oggetto salvato nel localstorage
+  
 
 
   return (
@@ -79,8 +95,8 @@ function Shop() {
           <Container>
             <Row>
               <Col>
-                {biglietti ? (
-                  biglietti.map((biglietto) => (
+                {carrello ? (
+                  carrello.map((biglietto) => (
                     <>
                       <div className='d-flex ' >
                         <Row>
@@ -96,7 +112,7 @@ function Shop() {
 
 
                           <Col className='p-0'>
-                            <Button className='bg-success rounded-circle py-1 px-2 border-0'><FontAwesomeIcon icon={faMinus} /></Button>
+                            <Button className='bg-success rounded-circle py-1 px-2 border-0'onClick={() => incrementaQuantita(biglietto.id, false)}><FontAwesomeIcon icon={faMinus} /></Button>
                           </Col>
                           <Col className=' p-0  '>
 
@@ -105,8 +121,8 @@ function Shop() {
 
                           </Col>
                           <Col className='p-0 ms-2 '>
-                            <Button className='bg-success rounded-circle py-1 px-2 border-0 m-0' onClick={() => incrementaQuantita(biglietto._id)}><FontAwesomeIcon icon={faPlus} /></Button>
-                            <Button className='bg-danger border-0 p-1 mt-2'><FontAwesomeIcon icon={faTrash} /></Button>
+                            <Button className='bg-success rounded-circle py-1 px-2 border-0 m-0' onClick={() => incrementaQuantita(biglietto.id, true)}><FontAwesomeIcon icon={faPlus} /></Button>
+                            <Button className='bg-danger border-0 p-1 mt-2' onClick={() => rimuoviBiglietto(biglietto.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                           </Col>
 
 

@@ -22,17 +22,20 @@ import Shop from '../Shop/Shop';
 function NavBar( {  setArrayEventi, totaleEventi } ) {
 
   const navigate = useNavigate();
-  const routeLogin = () => { navigate('/login') } // Serve per al click del bottone login, passare alla pagina /login
+  const routeLogin = () => { navigate('/login') }
+  const routeProfilo = () => {navigate('/profilo')} // Serve per al click del bottone login, passare alla pagina /login
 
   //Funzione per prendere l'avatar salvato
  const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
   }
+
   //Funzione per prendere il nome utente Loggato
   const getUserName = () => {
     const name = JSON.parse(localStorage.getItem('userName'))
     return name.charAt(0).toUpperCase() + name.slice(1)
   }
+
   //funzione logout
 
   const [refresh, setRefresh] = useState(0)
@@ -99,19 +102,22 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
               
             />
             <Button variant="outline-success" onClick={handleFilterClick}><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
-            <Shop /> 
+            
+            <Shop /> {/* Componente */}
            
             {getUserAvatar() !== null &&
               <>
-                <span className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
+                <span id='nome' className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
                 <div className='ms-2 p-1 ' variant="outline-success" >
 
                   <img className='rounded-circle'
                     src={getUserAvatar()}
                     alt="User Avatar"
                     style={{ maxWidth: '2rem' }}
+                    onClick={routeProfilo}
 
                   />
+                  
                 </div>
                 <Button variant="outline-success bg-light"  className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
               </>

@@ -19,14 +19,15 @@ const Profilo = () => {
     <>
     <NavBar />
 
-    <Container className="form-color d-flex justify-content-center p-3 mt-5 border rounded-5">
+    <Container className="form-color d-flex flex-column align-items-center p-3 mt-5 border rounded-5">
         <Card style={{ width: '18rem' }}>
       <Card.Img variant="top"   src={getUserAvatar()}/>
       <Card.Body>
-        <Card.Title>{getUserName()}</Card.Title>
+        <Card.Title>Ciao: {getUserName()}</Card.Title>
       </Card.Body>
     </Card>
-    <span className='d-flex'>I miei ordini:</span>
+    <p className='fw-bold'>I miei ordini:</p>
+      
     </Container>
     </>
     

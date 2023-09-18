@@ -12,3 +12,6 @@
     height: 4rem;
     width: 6em;
 }
+body {
+    overflow-x: hidden; /* Blocca lo scroll orizzontale */
+  }

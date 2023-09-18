@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Container, Row, Col, Offcanvas, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import {  toast } from 'react-toastify';
 
 
 
@@ -18,11 +19,6 @@ function Shop() {
     setShow(true);
   }
   const [carrello, setCarrello] = useState([]);
-
-  
-    
-  
-
   const navigate = useNavigate();
   const routeAcquista = () => { navigate('/profilo') }
 
@@ -50,6 +46,16 @@ function Shop() {
     
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
+    toast.error('Evento eliminato!', { 
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
 
   };
 

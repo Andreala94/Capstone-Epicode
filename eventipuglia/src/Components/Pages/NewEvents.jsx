@@ -36,7 +36,7 @@ function NewEvents( ) {
    
    
     <div className='row m-0 px-5'>
-       <div className='col' >
+       <div className='col-12' >
        <Button className='float-end me-5 '  id='bottone' variant="outline-light bg-success" onClick={handleRedirect}> <FontAwesomeIcon icon={faPlus} className='me-2'  />Crea Evento</Button>
        </div>
       </div>

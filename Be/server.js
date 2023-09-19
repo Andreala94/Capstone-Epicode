@@ -9,6 +9,7 @@ require('dotenv').config(); //per recuperare le variabili d'ambiente
 
 const autoriRoute = require('./routes/autori')
 const eventiRoute = require('./routes/eventi')
+const bigliettoRoute = require('./routes/BigliettoCarrello')
 
 // middleware
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(cors());
 //importo le rotte
 app.use("/", autoriRoute);
 app.use("/", eventiRoute);
+app.use("/", bigliettoRoute);
 
 
 mongoose.connect(process.env.MONGO_DB_URL);

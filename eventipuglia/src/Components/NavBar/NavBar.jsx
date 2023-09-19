@@ -80,6 +80,9 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
         <Navbar.Brand href="#" className='logo'>
         <img src="https://res.cloudinary.com/dsmb3mzsp/image/upload/v1693936569/CapstoneEpicode/logo_made_in_valle_d_itria_amrg1b.png" alt="Descrizione dell'immagine" />
         </Navbar.Brand>
+        <Nav.Link>
+              <Link className='text-decoration-none text-dark fw-bold ' to="/"><h4><em>Eventi Puglia</em></h4></Link>
+            </Nav.Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -87,12 +90,8 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link>
-              <Link className='text-decoration-none text-dark fw-bold ' to="/"><h4><em>Eventi Puglia</em></h4></Link>
-            </Nav.Link>
-
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex p-2">
             <Form.Control
               type="search"
               placeholder="Cerca Città"
@@ -102,32 +101,35 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
               
             />
             <Button variant="outline-success" onClick={handleFilterClick}><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
-            
+            </Form>
+            <div className='d-flex  p-2 justify-content-end'>
             <Shop /> {/* Componente */}
            
             {getUserAvatar() !== null &&
               <>
+              
                 <span id='nome' className='ms-2 d-flex align-items-center text-nowrap'> Benvenuto/a {getUserName()}</span>
                 <div className='ms-2 p-1 ' variant="outline-success" >
 
                   <img className='rounded-circle'
                     src={getUserAvatar()}
                     alt="User Avatar"
-                    style={{ maxWidth: '2rem' }}
+                    style={{ maxWidth: '2rem', cursor: 'pointer' }}
                     onClick={routeProfilo}
 
                   />
                   
                 </div>
-                <Button variant="outline-success bg-light"  className="bg-info ms-2 me-4" onClick={logout}> Logout</Button>
+              
+                <Button variant="outline-success bg-light"  className="bg-info ms-2" onClick={logout}> Logout</Button>
               </>
             }
             {getUserAvatar() === null &&
-              <Button variant="outline-success" className=" ms-2 me-4" onClick={routeLogin}> Login</Button>
+              <Button variant="outline-success" className=" ms-2" onClick={routeLogin}> Login</Button>
             }
 
 
-          </Form>
+          </div>
         </Navbar.Collapse>
 
         

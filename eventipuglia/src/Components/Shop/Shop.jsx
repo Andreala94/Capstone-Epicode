@@ -20,7 +20,50 @@ function Shop() {
   }
   const [carrello, setCarrello] = useState([]);
   const navigate = useNavigate();
-  const routeAcquista = () => { navigate('/profilo') }
+  
+  const routeAcquista = async () => {
+    if(carrello.length===0){
+      toast.error('Nessun Evento nel carrello!', { 
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+    }else{
+      try {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
+        {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            "carrello": JSON.parse(localStorage.getItem("carrello")),
+            "token": JSON.parse(localStorage.getItem("userToken"))
+          }) 
+        });
+        localStorage.removeItem("carrello")
+        navigate('/profilo')
+      } catch (error) {
+        toast.error('Errore nell\'acquisto dei biglietti!', { 
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
+      }
+       
+      
+    }
+    }
+
+
 
   //Somma prezzo carrello
 

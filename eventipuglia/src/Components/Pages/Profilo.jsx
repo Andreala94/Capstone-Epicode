@@ -13,6 +13,23 @@ const getUserAvatar = () => {
     const name = JSON.parse(localStorage.getItem('userName'))
     return name.charAt(0).toUpperCase() + name.slice(1)
   }
+// Funzione  get tramite token per prendere i biglietti
+const getBigliettiShop = async () =>{
+  
+  try {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
+    {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
 
 const Profilo = () => {
   return (

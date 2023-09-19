@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Button, Container, Row, Col, Offcanvas, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import {  toast } from 'react-toastify';
@@ -44,8 +44,10 @@ function Shop() {
             "token": JSON.parse(localStorage.getItem("userToken"))
           }) 
         });
+
         localStorage.removeItem("carrello")
         navigate('/profilo')
+
       } catch (error) {
         toast.error('Errore nell\'acquisto dei biglietti!', { 
           position: "top-center",
@@ -190,7 +192,7 @@ function Shop() {
             </Row>
             {localStorage.getItem('userToken') === null ? (
               // L'utente non è autenticato, mostra il bottone disabilitato
-              <div className="text-center bg-light p-3">
+              <div className="text-center bg-light p-2">
                 <p>Effettua Login</p>
                 <Button variant="success" disabled>Acquista</Button>
               </div>

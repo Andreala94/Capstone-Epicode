@@ -66,4 +66,34 @@ BigliettoR.get("/shop/biglietto",    async (req, res) => {
 
 })
 
+
+BigliettoR.get('/shop/biglietto/:token', async (req, res) => {
+    const { userToken } = req.params
+
+    
+    try {
+        const biglietto = await Biglietto.findById({ userToken})
+
+        if (!biglietto) {
+            return res.status(404).send({
+                statusCode: 404,
+                message: ` post with id ${ userToken} not found!`
+            })}
+
+        res.status(200).send({
+            statusCode: 200,
+            biglietto: biglietto,
+        });
+
+
+    } catch (error) {
+        res.status(500).send({
+            statusCode: 500,
+            message: "internal server Error",
+            error,
+        });
+    }
+
+})
+
 module.exports = BigliettoR

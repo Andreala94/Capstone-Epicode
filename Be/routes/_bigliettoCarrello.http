@@ -19,3 +19,7 @@ Content-Type: application/json
 #########
 GET http://localhost:6060/shop/biglietto
 Content-Type: application/json
+
+##########
+GET http://localhost:6060/shop/biglietto/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW5kcmVhIiwic3VybmFtZSI6IkxhdXJvIiwiZW1haWwiOiJhbmRyZWEubGF1cm85NEBnbWFpbC5jb20iLCJkb2IiOiIxOTk0LTAxLTI4IiwiYXZhdGFyIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZHNtYjNtenNwL2ltYWdlL3VwbG9hZC92MTY5NDcwODAzNC9DYXBzdG9uZUVwaWNvZGUvdm1ucXR4cW9yODB3cGptY244dXgucG5nIiwiaWF0IjoxNjk1MTUyNDY3LCJleHAiOjE2OTUyMzg4Njd9.VroG39Y0073Mwi3ZSGtYjUnKzMIqP_jVXxkwqY8-LVc
+Content-Type: application/json

@@ -138,6 +138,7 @@ autoriR.post("/login/authors", async (req,res)=>{
         token,
         avatar: user.avatar,
         name: user.name,
+        idUtente: user._id
     })
 })
 

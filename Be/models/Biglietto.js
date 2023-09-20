@@ -10,6 +10,10 @@ const Biglietto = new mongoose.Schema(
             required: true,
 
         },
+        idUtente:{
+            type: String,
+            required: true,
+        },
         idEvento: {
             type: String,
             required: true,
@@ -27,11 +31,8 @@ const Biglietto = new mongoose.Schema(
         quantita: {
             type: Number,
             required: true,
-        },
-        userToken:{
-            type: String,
-            required: true,
         }
+       
 
 
     },

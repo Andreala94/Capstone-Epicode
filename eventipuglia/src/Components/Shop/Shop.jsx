@@ -1,8 +1,8 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { Button, Container, Row, Col, Offcanvas, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import {  toast } from 'react-toastify';
-
+import { toast } from 'react-toastify';
+import '../Shop/Shop.css';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,15 +15,15 @@ function Shop() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    setCarrello(JSON.parse(localStorage.getItem("carrello"))|| [])  
+    setCarrello(JSON.parse(localStorage.getItem("carrello")) || [])
     setShow(true);
   }
-  const [carrello, setCarrello] = useState([]);
+  const [carrello, setCarrello] = useState(JSON.parse(localStorage.getItem("carrello")) || []);
   const navigate = useNavigate();
-  
+
   const routeAcquista = async () => {
-    if(carrello.length===0){
-      toast.error('Nessun Evento nel carrello!', { 
+    if (carrello.length === 0) {
+      toast.error('Nessun Evento nel carrello!', {
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: false,
@@ -32,24 +32,25 @@ function Shop() {
         draggable: true,
         progress: undefined,
         theme: "colored",
-        });
-    }else{
+      });
+    } else {
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
-        {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            "carrello": JSON.parse(localStorage.getItem("carrello")),
-            "token": JSON.parse(localStorage.getItem("userToken"))
-          }) 
-        });
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              "carrello": JSON.parse(localStorage.getItem("carrello")),
+              "idUtente": JSON.parse(localStorage.getItem("idUtente"))
+
+            })
+          });
 
         localStorage.removeItem("carrello")
         navigate('/profilo')
 
       } catch (error) {
-        toast.error('Errore nell\'acquisto dei biglietti!', { 
+        toast.error('Errore nell\'acquisto dei biglietti!', {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
@@ -58,12 +59,12 @@ function Shop() {
           draggable: true,
           progress: undefined,
           theme: "colored",
-          });
+        });
       }
-       
-      
+
+
     }
-    }
+  }
 
 
 
@@ -88,10 +89,10 @@ function Shop() {
 
     const carrello = JSON.parse(localStorage.getItem("carrello"))
     const nuovoCarrello = carrello.filter((biglietto) => biglietto.id !== id);
-    
+
     setCarrello(nuovoCarrello);
     localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
-    toast.error('Evento eliminato!', { 
+    toast.error('Evento eliminato!', {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
@@ -100,7 +101,7 @@ function Shop() {
       draggable: true,
       progress: undefined,
       theme: "colored",
-      });
+    });
 
   };
 
@@ -108,33 +109,36 @@ function Shop() {
 
 
   //Incremento e decremento quantità 
-  const incrementaQuantita = (id, incremento ) => {
-    
+  const incrementaQuantita = (id, incremento) => {
+
     const carrello = JSON.parse(localStorage.getItem("carrello"))
     const bigliettoEvento = carrello.find((biglietto) => biglietto.id === id);
 
-    if (bigliettoEvento ) {
-    //il biglietto esiste nel carrello
+    if (bigliettoEvento) {
+      //il biglietto esiste nel carrello
 
-     if(incremento === true) {
-      bigliettoEvento.quantita++;
-      
-     }else if(bigliettoEvento.quantita >1){
-      bigliettoEvento.quantita--;
-     }
+      if (incremento === true) {
+        bigliettoEvento.quantita++;
+
+      } else if (bigliettoEvento.quantita > 1) {
+        bigliettoEvento.quantita--;
+      }
 
       localStorage.setItem("carrello", JSON.stringify(carrello));
       setCarrello(carrello)
-      
+
     }
   };
 
-  
+
 
 
   return (
     <>
-      <Button className='ms-2' variant="outline-success" onClick={handleShow}><FontAwesomeIcon icon={faShoppingCart} /></Button>
+      <Button style={{ "position": "relative" }} className='ms-2' variant="outline-success" onClick={handleShow}>
+        <FontAwesomeIcon icon={faShoppingCart} />
+        {carrello.length > 0 ? (<span id='notifica'></span>) : ''}
+      </Button>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
@@ -163,7 +167,7 @@ function Shop() {
 
 
                           <Col className='p-0'>
-                            <Button className='bg-success rounded-circle py-1 px-2 border-0'onClick={() => incrementaQuantita(biglietto.id, false)}><FontAwesomeIcon icon={faMinus} /></Button>
+                            <Button className='bg-success rounded-circle py-1 px-2 border-0' onClick={() => incrementaQuantita(biglietto.id, false)}><FontAwesomeIcon icon={faMinus} /></Button>
                           </Col>
                           <Col className=' p-0  '>
 
@@ -199,10 +203,10 @@ function Shop() {
             ) : (
               // L'utente è autenticato, mostra il bottone abilitato
               <div className="text-center bg-light p-3">
-                <Button variant="success"onClick={routeAcquista}>Acquista</Button>
+                <Button variant="success" onClick={routeAcquista}>Acquista</Button>
               </div>
             )}
-            
+
 
           </Container>
 

@@ -44,6 +44,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
     localStorage.removeItem('userName')
     localStorage.removeItem('userAvatar')
     localStorage.removeItem('userToken')
+    localStorage.removeItem('idUtente')
     setRefresh(refresh + 1)
   }
 

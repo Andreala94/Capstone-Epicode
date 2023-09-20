@@ -15,7 +15,7 @@ BigliettoR.post("/shop/biglietto", async (req, res)=>{
             immagine: biglietto.immagine,
             prezzo: biglietto.prezzo,
             quantita: biglietto.quantita,
-            userToken: req.body.token
+            idUtente: req.body.idUtente
         })
     
         try {
@@ -67,17 +67,17 @@ BigliettoR.get("/shop/biglietto",    async (req, res) => {
 })
 
 
-BigliettoR.get('/shop/biglietto/:token', async (req, res) => {
-    const { userToken } = req.params
+BigliettoR.get('/shop/biglietto/:idUtente', async (req, res) => {
+    const { idUtente } = req.params
 
     
     try {
-        const biglietto = await Biglietto.findById({ userToken})
+        const biglietto = await Biglietto.find({ idUtente: idUtente });
 
         if (!biglietto) {
             return res.status(404).send({
                 statusCode: 404,
-                message: ` post with id ${ userToken} not found!`
+                message: ` post with id ${ idUtente} not found!`
             })}
 
         res.status(200).send({

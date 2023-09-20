@@ -38,6 +38,7 @@ function Login(){
                 localStorage.setItem('userToken', JSON.stringify(risposta.token))
                 localStorage.setItem('userAvatar', JSON.stringify(risposta.avatar))
                 localStorage.setItem('userName', JSON.stringify(risposta.name))
+                localStorage.setItem('idUtente', JSON.stringify(risposta.idUtente))
             
                 
               

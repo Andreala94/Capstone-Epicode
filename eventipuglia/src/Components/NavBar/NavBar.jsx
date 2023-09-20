@@ -25,6 +25,8 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
   const routeLogin = () => { navigate('/login') }
   const routeProfilo = () => {navigate('/profilo')} // Serve per al click del bottone login, passare alla pagina /login
 
+  
+
   //Funzione per prendere l'avatar salvato
  const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
@@ -104,7 +106,7 @@ function NavBar( {  setArrayEventi, totaleEventi } ) {
             <Button variant="outline-success" onClick={handleFilterClick}><FontAwesomeIcon icon={faMagnifyingGlass} /></Button>
             </Form>
             <div className='d-flex  p-2 justify-content-end'>
-            <Shop /> {/* Componente */}
+            <Shop  /> {/* Componente */}
            
             {getUserAvatar() !== null &&
               <>

@@ -35,7 +35,7 @@ function Shop() {
       });
     } else {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
+         await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -75,7 +75,7 @@ function Shop() {
 
     if (carrello) {
       for (const biglietto of carrello) {
-        if (parseInt(biglietto.prezzo) !== NaN) {
+        if (!isNaN(parseInt(biglietto.prezzo))) {
           totale += parseInt(biglietto.prezzo) * biglietto.quantita
         }
       }
@@ -137,7 +137,7 @@ function Shop() {
     <>
       <Button style={{ "position": "relative" }} className='ms-2' variant="outline-success" onClick={handleShow}>
         <FontAwesomeIcon icon={faShoppingCart} />
-        {carrello.length > 0 ? (<span id='notifica'></span>) : ''}
+       {/* <span id='notifica'></span> */}
       </Button>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">

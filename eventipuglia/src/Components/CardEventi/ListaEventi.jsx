@@ -12,7 +12,7 @@ const ListaEventi = ( { eventi } ) => {
 
     return (
         <>
-            <Container className="mt-5" id='listaeventi'>
+            <div className="mt-5 container content-row" id='listaeventi'>
                 <Row>
                     {eventi &&
                         eventi.map((evento) => (
@@ -40,7 +40,7 @@ const ListaEventi = ( { eventi } ) => {
                 </Row>
 
                
-            </Container>
+            </div>
         </>
     )
 }

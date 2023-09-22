@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar/NavBar';
 import '../Pages/CSS/Profilo.css'
-import { Card, Container, Col, Row } from 'react-bootstrap';
+import { Card,  Container,  Row } from 'react-bootstrap';
+import Footer from '../Footer/Footer'
 
 
 const Profilo = () => {
 
   const [biglietti, setBiglietti] = useState([])
 
+  //Funzione per prendere l'avatar
   const getUserAvatar = () => {
     return JSON.parse(localStorage.getItem('userAvatar'))
   }
@@ -37,9 +39,6 @@ const Profilo = () => {
     }
   }
 
-
-
-
   useEffect(() => {
     getBigliettiShop()
   }, [])
@@ -47,17 +46,18 @@ const Profilo = () => {
   return (
     <>
       <NavBar />
-
-      <Container className="form-color d-flex flex-column align-items-center  mt-5 border rounded-5">
-        <Card style={{ width: '18rem' }}>
+         
+      <Container className="form-color d-flex flex-column align-items-center  mt-5 border rounded-5  ">
+        <Card className='mt-3' style={{ width: '18rem' }}>
           <Card.Img variant="top" src={getUserAvatar()} />
           <Card.Body>
             <Card.Title>Ciao: {getUserName()} benvenuto nella tua pagina profilo</Card.Title>
           </Card.Body>
         </Card>
-         <h4 className='fw-bolder mb-5 mt-3'>I miei ordini:</h4>
+        <h4 className='fw-bolder mb-5 mt-3'>I miei ordini:</h4>
 
         <Row className='mb-3 justify-content-center '>
+          
           {biglietti &&
             biglietti.map((biglietto) => (
               <div className="card text-center m-2" style={{ width: '18rem' }}>
@@ -69,13 +69,14 @@ const Profilo = () => {
                   <p className="card-text">Acquistato il: {new Date(biglietto.createdAt).toLocaleDateString()} {new Date(biglietto.createdAt).toLocaleTimeString()}</p>
                 </div>
               </div>
-
+              
             ))}
+            
         </Row>
 
-
-
       </Container>
+
+      <Footer />
     </>
 
   )

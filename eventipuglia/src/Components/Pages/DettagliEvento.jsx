@@ -10,7 +10,7 @@ import './CSS/DettagliEvento.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import {  toast } from 'react-toastify';
-
+import Footer from '../Footer/Footer'
 
 
 
@@ -70,10 +70,10 @@ const acquistoBiglietto = () =>{
   }else{
     arrayBiglietti.push({
     id: id,
-    titolo: title,
-    prezzo: prezzo,
+    titolo: titleValue,
+    prezzo: prezzoValue,
     quantita: 1,
-    immagine: img
+    immagine: imgValue
     
   })}
 
@@ -127,6 +127,7 @@ const acquistoBiglietto = () =>{
       </Row>
    
     </Container>
+     <Footer />
     </>
     
   )

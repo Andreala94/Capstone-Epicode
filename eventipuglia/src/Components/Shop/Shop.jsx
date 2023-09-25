@@ -34,6 +34,8 @@ function Shop() {
         theme: "colored",
       });
     } else {
+      // Invia una richiesta HTTP POST all'endpoint `/shop/biglietto` dell'API backend.
+      // La richiesta include il carrello e l'ID utente dell'utente.
       try {
          await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/shop/biglietto`,
           {

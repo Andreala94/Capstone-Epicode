@@ -15,11 +15,14 @@ export const Footer = () => {
             <div className="topic text-dark text-center ">Contatti</div>
 
             <div className="email text-dark">
-              <a href="#"><i className="fas fa-envelope" />andrea.lauro94@gmail.com</a>
+            <a href="https://mail.google.com" target="_blank">andrea.lauro94@gmail.com</a>.
+              <p>
+                Puoi trovare il mio profilo LinkedIn<br></br>
+                <a href="https://www.linkedin.com/in/andrea-lauro-113b6225b/" target="_blank">Andrea Lauro</a>.
+              </p>
             </div>
           </div>
 
-        </div>
         </div>
         <div className="diritti bottom text-dark px-0 d-flex justify-content-center">
           <p className='my-2'>Copyright © 2023 Andrea Lauro</p>
@@ -27,7 +30,9 @@ export const Footer = () => {
 
       </div>
 
-      
+
     </footer>
   )
 }
+
+export default Footer;
